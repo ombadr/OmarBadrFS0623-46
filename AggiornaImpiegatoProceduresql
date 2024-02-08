@@ -1,0 +1,26 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE [dbo].[AggiornaImpiegato]
+    @IDImpiegato INT,
+    @Cognome VARCHAR(255),
+    @Nome VARCHAR(255),
+    @CodiceFiscale VARCHAR(255),
+    @Età INT,
+    @RedditoMensile MONEY,
+    @DetrazioneFiscale BIT
+AS
+BEGIN
+    UPDATE IMPIEGATO
+    SET Cognome = @Cognome,
+    Nome = @Nome,
+    CodiceFiscale = @CodiceFiscale,
+    Età = @Età,
+    RedditoMensile = @RedditoMensile,
+    DetrazioneFiscale = @DetrazioneFiscale
+    
+    WHERE IDImpiegato = @IDImpiegato
+END
+GO
